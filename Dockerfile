@@ -10,7 +10,7 @@ ENV TZ=UTC
 WORKDIR /app
 
 # Copy only the necessary files to the working directory
-COPY gg_backend /app/gg_backend
+COPY app /app/app
 COPY requirements.txt /app/
 
 # Install the application dependencies
