@@ -37,8 +37,12 @@ def data(name):
         current_year_og = current_month in [10, 11, 12] and current_year + 1 == year
         current_year_alt = current_month in [1, 2, 3, 4, 5, 6] and current_year == year
         
+        last_day = int(open(os.path.join(root, "last_update.txt"), "r").readlines()[0])
+
         if in_season and (current_year_og or current_year_alt) and last_day != current_day:
-            get_stats(year)
+            gg.get_stats(year)
+            f = open(os.path.join(root, "last_update.txt"), "w")
+            f.write(str(current_day) + "\n" + today.strftime("%b %d %Y %H:%M:%S"))
             f = open(os.path.join(root, f'stats/{name}'))
             data = json.load(f)
             return data
